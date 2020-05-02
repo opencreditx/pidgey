@@ -23,11 +23,8 @@ import mongoose from './mongoose';
 const app: Application = express(feathers());
 
 
-let config = configuration();
-console.log("config:", config());
-
 // Load app configuration
-app.configure(config);
+app.configure(configuration());
 // Enable security, CORS, compression, favicon and body parsing
 app.use(helmet());
 app.use(cors());
