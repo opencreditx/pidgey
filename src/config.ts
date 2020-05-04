@@ -1,5 +1,5 @@
-import configuration from '@feathersjs/configuration';
+import configuration from "@feathersjs/configuration";
 
-let config = configuration();
+const config = configuration();
 
-console.log('config:',config);
+console.log("config:", config);

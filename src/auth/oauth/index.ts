@@ -1,5 +1,3 @@
-import GoogleStrategy from './google'
+import GoogleStrategy from "./google";
 
-export {
-    GoogleStrategy
-}
+export { GoogleStrategy };

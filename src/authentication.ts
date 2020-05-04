@@ -1,26 +1,26 @@
-import { ServiceAddons } from '@feathersjs/feathers';
-import { AuthenticationService, JWTStrategy } from '@feathersjs/authentication';
-import { LocalStrategy } from '@feathersjs/authentication-local';
-import { expressOauth, OAuthStrategy } from '@feathersjs/authentication-oauth';
+import { ServiceAddons } from "@feathersjs/feathers";
+import { AuthenticationService, JWTStrategy } from "@feathersjs/authentication";
+import { LocalStrategy } from "@feathersjs/authentication-local";
+import { expressOauth } from "@feathersjs/authentication-oauth";
 
-import { Application } from './declarations';
-import { GoogleStrategy } from './auth';
+import { Application } from "./declarations";
+import { GoogleStrategy } from "./auth";
+import AnonymousStrategy from "./auth/anonymous";
 
-declare module './declarations' {
-  interface ServiceTypes {
-    'authentication': AuthenticationService & ServiceAddons<any>;
-  }
+declare module "./declarations" {
+    interface ServiceTypes {
+        authentication: AuthenticationService & ServiceAddons<any>;
+    }
 }
 
-export default function(app: Application) {
-    const authConfig = app.get('authentication');
-    
+export default function (app: Application): void {
     const authentication = new AuthenticationService(app);
 
-    authentication.register('jwt', new JWTStrategy());
-    authentication.register('local', new LocalStrategy());
-    authentication.register('google', new GoogleStrategy());
+    authentication.register("jwt", new JWTStrategy());
+    authentication.register("local", new LocalStrategy());
+    authentication.register("google", new GoogleStrategy());
+    authentication.register("anonymous", new AnonymousStrategy());
 
-    app.use('/authentication', authentication);
+    app.use("/authentication", authentication);
     app.configure(expressOauth());
 }

@@ -2,32 +2,33 @@
 //
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
-import { Application } from '../declarations';
-import logger from '../logger';
+import { Application } from "../declarations";
+import { Model, Document } from "mongoose";
 
-export default function (app: Application) {
-    const modelName = 'users';
-    const mongooseClient = app.get('mongooseClient');
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function (app: Application): Model<Document> {
+    const modelName = "users";
+    const mongooseClient = app.get("mongooseClient");
 
-    const schema = new mongooseClient.Schema({
+    const schema = new mongooseClient.Schema(
+        {
+            email: { type: String, unique: true, lowercase: true },
+            password: { type: String },
 
-        email: { type: String, unique: true, lowercase: true },
-        password: { type: String },
+            auth0Id: { type: String },
 
+            googleId: { type: String },
 
-        auth0Id: { type: String },
+            facebookId: { type: String },
 
-        googleId: { type: String },
+            twitterId: { type: String },
 
-        facebookId: { type: String },
-
-        twitterId: { type: String },
-
-        githubId: { type: String },
-
-        }, {
-        timestamps: true
-    });
+            githubId: { type: String },
+        },
+        {
+            timestamps: true,
+        }
+    );
 
     // This is necessary to avoid model compilation errors in watch mode
     // see https://mongoosejs.com/docs/api/connection.html#connection_Connection-deleteModel
