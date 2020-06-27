@@ -13,7 +13,7 @@ export default function (app: Application): void {
             authSource: "admin",
             auth: {
                 user: "admin",
-                password: "localdb",
+                password: "nz5BpXiP2467",
             },
         })
         .then(() => {
@@ -27,7 +27,6 @@ export default function (app: Application): void {
         });
 
     mongoose.Promise = global.Promise;
-    mongoose.model
 
     app.set("mongooseClient", mongoose);
 }

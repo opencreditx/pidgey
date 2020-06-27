@@ -30,20 +30,23 @@ app.use(compress());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(favicon(path.join(app.get("public"), "favicon.ico")));
-// Host the public folder
-app.use("/", express.static(app.get("public")));
 
 // Set up Plugins and providers
 app.configure(express.rest());
 app.configure(socketio());
 
+// Connect database
 app.configure(mongoose);
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);
+
+// Configurate authentication (see authentication.ts)
 app.configure(authentication);
+
 // Set up our services (see `services/index.js`)
 app.configure(services);
+
 // Set up event channels (see channels.js)
 app.configure(channels);
 
@@ -51,6 +54,7 @@ app.configure(channels);
 app.use(express.notFound());
 app.use(express.errorHandler({ logger }));
 
+// Connect hooks
 app.hooks(appHooks);
 
 export default app;

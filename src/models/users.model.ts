@@ -5,7 +5,6 @@
 import { Application } from "../declarations";
 import { Model, Document } from "mongoose";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function (app: Application): Model<Document> {
     const modelName = "users";
     const mongooseClient = app.get("mongooseClient");

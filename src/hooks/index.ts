@@ -1,3 +1,4 @@
 import allowAnonymous from "./anonymousAuth";
+import checkUserExists from "./checkUserExists";
 
-export { allowAnonymous };
+export { allowAnonymous, checkUserExists };
