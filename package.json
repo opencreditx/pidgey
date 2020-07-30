@@ -55,7 +55,7 @@
     "idx": "^2.5.6",
     "lodash": "^4.17.19",
     "mongodb-core": "^3.2.7",
-    "mongoose": "^5.9.25",
+    "mongoose": "^5.9.26",
     "serve-favicon": "^2.5.0",
     "winston": "^3.3.3"
   },
@@ -65,7 +65,7 @@
     "@types/helmet": "0.0.45",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mocha": "^7.0.2",
-    "@types/mongoose": "^5.7.32",
+    "@types/mongoose": "^5.7.34",
     "@types/serve-favicon": "^2.5.0",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
